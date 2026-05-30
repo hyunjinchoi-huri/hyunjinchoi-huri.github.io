@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HuRI Lab — Human–Robot Interaction Laboratory</title>
+  <meta name="description" content="HuRI Lab focuses on human-centered wearable robotic systems for mobility assistance and rehabilitation.">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* ── Hero ── */
+    .hero {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 55%, #1e3a6e 100%);
+      min-height: 480px;
+      display: flex;
+      align-items: center;
+      padding: 4rem 2.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      right: -100px; top: -100px;
+      width: 560px; height: 560px;
+      border-radius: 50%;
+      border: 1px solid rgba(46,134,222,.12);
+      pointer-events: none;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      right: 80px; top: 80px;
+      width: 320px; height: 320px;
+      border-radius: 50%;
+      border: 1px solid rgba(46,134,222,.08);
+      pointer-events: none;
+    }
+    .hero-content { max-width: 620px; position: relative; z-index: 1; }
+    .hero-tag {
+      display: inline-block;
+      background: rgba(46,134,222,.2);
+      color: var(--blue-light);
+      font-size: 11.5px;
+      font-weight: 500;
+      letter-spacing: .1em;
+      padding: 5px 15px;
+      border-radius: 20px;
+      margin-bottom: 1.4rem;
+      text-transform: uppercase;
+    }
+    .hero h1 {
+      font-size: 40px;
+      font-weight: 600;
+      color: var(--white);
+      line-height: 1.18;
+      margin-bottom: 1rem;
+    }
+    .hero h1 span { color: var(--blue-light); }
+    .hero-desc {
+      font-size: 15.5px;
+      color: rgba(255,255,255,.68);
+      line-height: 1.8;
+      margin-bottom: 2rem;
+      max-width: 540px;
+    }
+    .hero-stats { display: flex; gap: 2.5rem; }
+    .stat-num { font-size: 28px; font-weight: 600; color: var(--white); }
+    .stat-label {
+      font-size: 11.5px;
+      color: rgba(255,255,255,.45);
+      letter-spacing: .05em;
+      margin-top: 2px;
+    }
+
+    /* ── News bar ── */
+    .news-bar {
+      background: var(--blue);
+      padding: 9px 2.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .news-bar-label {
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      color: rgba(255,255,255,.7);
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .news-bar-text { font-size: 13.5px; color: var(--white); }
+
+    /* ── Research cards ── */
+    .research-grid { display: grid; grid-template-columns: 1fr; gap: 1.1rem; }
+    .research-card {
+      background: var(--gray-50);
+      border: 1px solid var(--gray-100);
+      border-left: 4px solid var(--blue);
+      border-radius: var(--radius-md);
+      padding: 1.4rem 1.6rem;
+      transition: box-shadow .2s;
+    }
+    .research-card:hover { box-shadow: var(--shadow-md); }
+    .research-card h3 {
+      font-size: 15.5px;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: .5rem;
+    }
+    .research-card p {
+      font-size: 13.5px;
+      color: var(--gray-600);
+      line-height: 1.75;
+      margin-bottom: .9rem;
+    }
+
+    /* ── Recent news list ── */
+    .news-list { display: flex; flex-direction: column; gap: .75rem; margin-top: 1rem; }
+    .news-item {
+      display: flex;
+      gap: 1rem;
+      padding: .9rem 1.1rem;
+      background: var(--gray-50);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--gray-100);
+      align-items: flex-start;
+    }
+    .news-date {
+      font-size: 11.5px;
+      font-weight: 600;
+      color: var(--blue);
+      white-space: nowrap;
+      margin-top: 2px;
+      min-width: 60px;
+    }
+    .news-text { font-size: 13.5px; color: var(--gray-600); line-height: 1.6; }
+    .news-more-btn {
+      margin-top: .75rem;
+      background: none;
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-md);
+      padding: .45rem 1rem;
+      font-size: 13px;
+      color: var(--blue);
+      cursor: pointer;
+    }
+    .news-more-btn:hover { background: var(--gray-50); }
+
+    @media (max-width: 720px) {
+      .hero { padding: 3rem 1.25rem; min-height: 380px; }
+      .hero h1 { font-size: 28px; }
+      .hero-stats { gap: 1.5rem; }
+      .stat-num { font-size: 22px; }
+      .news-bar { padding: 9px 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="nav">
+  <a href="index.html" class="nav-logo"><img src="images/logo_darkbg_trans.png" alt="HuRI Lab" height="36"></a>
+  <button class="nav-toggle" onclick="toggleNav()" aria-label="Toggle navigation">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="index.html" class="active">Home</a></li>
+    <li><a href="pi.html">PI</a></li>
+    <li><a href="research.html">Research</a></li>
+    <li><a href="publications.html">Publications</a></li>
+    <li><a href="members.html">Members</a></li>
+    <li><a href="activities.html">Activities</a></li>
+  </ul>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-tag">Wearable Robotics · Rehabilitation · HRI</div>
+    <h1>Human–Robot<br><span>Interaction Lab</span></h1>
+    <p class="hero-desc">
+      We design human-centered wearable robotic systems that closely interact with the human body —
+      integrating exoskeletons, wearable sensing, and intelligent control to restore and enhance human mobility.
+    </p>
+    </div>
+  </div>
+</section>
+
+<!-- Latest news bar -->
+<div class="news-bar">
+  <span class="news-bar-label">Latest</span>
+  <span class="news-bar-text">
+    (2026.02) 🎉 Our paper on real-time spatiotemporal gait analysis has been accepted to <em>IEEE Access</em>! Congratulations!
+  </span>
+</div>
+
+<!-- Main content -->
+<div class="container">
+
+  <!-- Research overview -->
+  <div class="section-header">
+    <h2>Research Overview</h2>
+    <div class="underline"></div>
+  </div>
+  <div class="research-grid">
+    <a href="research.html" class="research-card" style="text-decoration:none;">
+      <h3>Wearable Robots for Assistance &amp; Rehabilitation</h3>
+      <p>Hip-assistive and lower-limb exoskeletons with joint-torque-based assistance strategies, validated through laboratory and clinical studies for safe, intuitive daily use.</p>
+      <div class="tag-list">
+        <span class="tag">Hip-assistive exoskeletons</span>
+        <span class="tag">Joint torque assistance</span>
+        <span class="tag">Rehabilitation robotics</span>
+        <span class="tag">Exoskeleton user interfaces</span>
+      </div>
+    </a>
+    <a href="research.html" class="research-card" style="text-decoration:none;">
+      <h3>Gait Analysis &amp; Human Motion Understanding</h3>
+      <p>Wearable-based gait event detection, locomotion mode recognition, and joint kinematic estimation for real-world assessment—including applications for Parkinson's disease.</p>
+      <div class="tag-list">
+        <span class="tag">Gait event detection</span>
+        <span class="tag">Locomotion mode recognition</span>
+        <span class="tag">Knee/hip kinematic estimation</span>
+        <span class="tag">Parkinsonian gait analysis</span>
+      </div>
+    </a>
+    <a href="research.html" class="research-card" style="text-decoration:none;">
+      <h3>Wearable Sensors &amp; Force Measurement</h3>
+      <p>Soft pneumatic three-axis force sensors, large-scale multi-axis sensor units, and leaf-inspired FSR insoles for mobile ground reaction force estimation outside the laboratory.</p>
+      <div class="tag-list">
+        <span class="tag">Soft pneumatic force sensors</span>
+        <span class="tag">Multi-axis force sensing</span>
+        <span class="tag">FSR insole systems</span>
+        <span class="tag">Ground reaction force estimation</span>
+      </div>
+    </a>
+    <a href="research.html" class="research-card" style="text-decoration:none;">
+      <h3>Human–Robot Interaction &amp; Assistive Technology</h3>
+      <p>Pneumatic mechanomyography (pMMG) and pressure-sensor-based wearable interfaces for high-accuracy hand gesture recognition, robot control, and exercise monitoring.</p>
+      <div class="tag-list">
+        <span class="tag">Pneumatic mechanomyography (pMMG)</span>
+        <span class="tag">Hand gesture recognition</span>
+        <span class="tag">Muscle activity monitoring</span>
+        <span class="tag">Vision-based assistive systems</span>
+      </div>
+    </a>
+  </div>
+
+  <!-- Recent News -->
+  <div class="section-header" style="margin-top: 3rem;">
+    <h2>News</h2>
+    <div class="underline"></div>
+  </div>
+  <div class="news-list" id="news-list">
+
+    <!-- 최신 5개 항상 표시 -->
+    <div class="news-item">
+      <span class="news-date">2026.02</span>
+      <span class="news-text">🎉 Our paper on real-time spatiotemporal gait analysis has been accepted to <em>IEEE Access</em>! Congratulations!</span>
+    </div>
+    <div class="news-item">
+      <span class="news-date">2025.09</span>
+      <span class="news-text">🙌 구선민 학생이 석사과정에 입학했습니다. HuRI Lab에 오신 것을 환영합니다!</span>
+    </div>
+    <div class="news-item">
+      <span class="news-date">2025.02</span>
+      <span class="news-text">🎓 김희찬 학생이 석사학위를 취득했습니다. 축하합니다!</span>
+    </div>
+
+    <!-- 오래된 뉴스: 평소엔 숨김 -->
+    <div class="news-old" style="display:none;">
+    </div>
+
+  </div>
+  <button class="news-more-btn" onclick="toggleOldNews()" id="news-more-btn" style="display:none;">+ 더보기</button>
+
+</div>
+
+<!-- Footer -->
+<footer class="footer">
+  <p>
+    HuRI Lab · Department of Human Intelligence and Robot Engineering · Sangmyung University<br>
+    Sangmyungdaegil 31, Cheonan, Korea
+  </p>
+  <p style="margin-top:.5rem;">© 2026 HuRI Lab. All rights reserved.</p>
+</footer>
+
+<script>
+function toggleNav() {
+  document.getElementById('nav-links').classList.toggle('open');
+}
+
+function toggleOldNews() {
+  const old = document.querySelector('.news-old');
+  const btn = document.getElementById('news-more-btn');
+  const isHidden = old.style.display === 'none';
+  old.style.display = isHidden ? 'contents' : 'none';
+  btn.textContent = isHidden ? '− 접기' : '+ 더보기';
+}
+
+(function() {
+  const old = document.querySelector('.news-old');
+  if (old && old.children.length > 0) {
+    document.getElementById('news-more-btn').style.display = 'block';
+  }
+})();
+</script>
+</body>
+</html>

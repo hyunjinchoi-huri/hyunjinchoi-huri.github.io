@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PI — HuRI Lab</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* ── PI top block ── */
+    .pi-top {
+      display: grid;
+      grid-template-columns: 190px 1fr;
+      gap: 2.5rem;
+      align-items: start;
+      margin-bottom: 1rem;
+    }
+    .pi-photo {
+      width: 175px;
+      height: 215px;
+      border-radius: var(--radius-md);
+      object-fit: cover;
+      background: linear-gradient(160deg, var(--navy) 0%, var(--blue) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    /* If no photo: show placeholder text */
+    .pi-photo-placeholder {
+      color: rgba(255,255,255,.2);
+      font-size: 60px;
+      user-select: none;
+    }
+    .pi-name { font-size: 24px; font-weight: 600; color: var(--navy); margin-bottom: 4px; }
+    .pi-title { font-size: 14px; color: var(--blue); font-weight: 500; margin-bottom: 4px; }
+    .pi-affil { font-size: 13.5px; color: var(--gray-400); margin-bottom: 1.1rem; }
+    .pi-bio {
+      font-size: 14px;
+      color: var(--gray-600);
+      line-height: 1.85;
+      margin-bottom: 1.1rem;
+    }
+    .pi-links { display: flex; gap: .6rem; flex-wrap: wrap; }
+    .pi-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 12.5px;
+      color: var(--blue);
+      border: 1px solid rgba(46,134,222,.35);
+      padding: 5px 14px;
+      border-radius: 20px;
+      text-decoration: none;
+      transition: background .2s;
+    }
+    .pi-link:hover { background: var(--blue-pale); text-decoration: none; }
+
+    /* ── CV-style rows ── */
+    .cv-block { margin-bottom: .25rem; }
+    .cv-row {
+      display: grid;
+      grid-template-columns: 115px 1fr;
+      gap: .5rem 1.25rem;
+      padding: .65rem 0;
+      border-bottom: 1px solid var(--gray-100);
+      font-size: 13.5px;
+      align-items: baseline;
+    }
+    .cv-row:last-child { border-bottom: none; }
+    .cv-year {
+      color: var(--gray-400);
+      font-size: 12.5px;
+      line-height: 1.5;
+      padding-top: 1px;
+    }
+    .cv-content { color: var(--gray-600); line-height: 1.7; }
+    .cv-content strong { color: var(--navy); font-weight: 500; }
+    .cv-content em { color: var(--gray-400); font-size: 12.5px; font-style: normal; }
+
+    /* ── Grant subsections ── */
+    .grant-group { margin-bottom: 1.5rem; }
+    .grant-group-label {
+      font-size: 11.5px;
+      font-weight: 700;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: .5rem;
+    }
+    .grant-group.past .grant-group-label { color: var(--gray-400); }
+
+    @media (max-width: 600px) {
+      .pi-top { grid-template-columns: 1fr; }
+      .pi-photo { width: 130px; height: 160px; }
+      .cv-row { grid-template-columns: 1fr; gap: .15rem; }
+      .cv-year { color: var(--blue); font-size: 11.5px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html" class="nav-logo"><img src="images/logo_darkbg_trans.png" alt="HuRI Lab" height="36"></a>
+  <button class="nav-toggle" onclick="toggleNav()" aria-label="Toggle navigation">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="pi.html" class="active">PI</a></li>
+    <li><a href="research.html">Research</a></li>
+    <li><a href="publications.html">Publications</a></li>
+    <li><a href="members.html">Members</a></li>
+    <li><a href="activities.html">Activities</a></li>
+  </ul>
+</nav>
+
+<div class="page-hero">
+  <h1>Principal Investigator</h1>
+  <p>HuRI Lab · Human–Robot Interaction Laboratory</p>
+</div>
+
+<div class="container">
+
+  <!-- Profile -->
+  <div class="pi-top">
+    <div>
+      <img src="images/members/Choi_HJ.png" alt="Hyunjin Choi" class="pi-photo">
+    </div>
+    <div>
+      <div class="pi-name">Hyunjin Choi (최현진)</div>
+      <div class="pi-title">Assistant Professor</div>
+      <div class="pi-affil">Department of Human Intelligence and Robot Engineering · Sangmyung University</div>
+      <div class="pi-links">
+        <a class="pi-link" href="files/CV_hjchoi.pdf" target="_blank">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          CV
+        </a>
+        <a class="pi-link" href="https://scholar.google.com/citations?user=UgLn9KQAAAAJ" target="_blank">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          Google Scholar
+        </a>
+        <a class="pi-link" href="https://orcid.org/0000-0002-0727-9679" target="_blank">ORCID</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Education -->
+  <div class="sub-label">Education</div>
+  <div class="cv-block">
+    <div class="cv-row">
+      <div class="cv-year">2019</div>
+      <div class="cv-content">
+        <strong>Ph.D.</strong> in Mechanical Engineering · Sogang University
+        <br><em>Dissertation: Assistance and Rehabilitation of People with Paretic Gait Using a Torque-controlled Wearable Robot</em>
+      </div>
+    </div>
+    <div class="cv-row">
+      <div class="cv-year">2012</div>
+      <div class="cv-content">
+        <strong>B.S.</strong> in Physics &amp; <strong>B.A.</strong> in Economics (Double Major) · Sogang University
+        <br><em>Magna Cum Laude</em>
+      </div>
+    </div>
+  </div>
+
+  <!-- Academic Positions -->
+  <div class="sub-label">Academic Positions</div>
+  <div class="cv-block">
+    <div class="cv-row">
+      <div class="cv-year">2020 – Present</div>
+      <div class="cv-content">
+        <strong>Assistant Professor</strong> · Department of Human Intelligence and Robot Engineering · Sangmyung University
+      </div>
+    </div>
+  </div>
+
+  <!-- Industry Experience -->
+  <div class="sub-label">Industry Experience</div>
+  <div class="cv-block">
+    <div class="cv-row">
+      <div class="cv-year">2017 – 2020</div>
+      <div class="cv-content">
+        <strong>Founding Member / Lead Engineer</strong> · Angel Robotics Co., Ltd
+      </div>
+    </div>
+  </div>
+
+  <!-- Academic Service -->
+  <div class="sub-label">Academic Service</div>
+  <div class="cv-block">
+    <div class="cv-row">
+      <div class="cv-year">2024 – Present</div>
+      <div class="cv-content">
+        <strong>Vice Chair</strong> · IFAC Technical Committee on Robotics (TC 4.3)
+      </div>
+    </div>
+    <div class="cv-row">
+      <div class="cv-year">2024 – 2026</div>
+      <div class="cv-content">
+        <strong>Organizing Committee Member</strong> · ICROS (Institute of Control, Robotics, and Systems)
+      </div>
+    </div>
+    <div class="cv-row">
+      <div class="cv-year">2025</div>
+      <div class="cv-content">
+        <strong>Proceedings Editor</strong> · IFAC Symposium on Robotics
+      </div>
+    </div>
+    <div class="cv-row">
+      <div class="cv-year">2026</div>
+      <div class="cv-content">
+        <strong>Associate Editor</strong> · IFAC World Congress
+      </div>
+    </div>
+  </div>
+
+  <!-- Awards -->
+  <div class="sub-label">Awards &amp; Fellowships</div>
+  <div class="cv-block">
+    <div class="cv-row">
+      <div class="cv-year">2020</div>
+      <div class="cv-content">
+        <strong>Gold and Bronze Medals</strong>, Powered Exoskeleton Race · Cybathlon
+        <br><em>Team Angel Robotics</em>
+      </div>
+    </div>
+    <div class="cv-row">
+      <div class="cv-year">2019</div>
+      <div class="cv-content">
+        <strong>Young Researcher Award</strong> · Institute of Control, Robotics and Systems
+      </div>
+    </div>
+    <div class="cv-row">
+      <div class="cv-year">2017</div>
+      <div class="cv-content">
+        <strong>Top 10 Student Project Worldwide</strong> · National Instruments
+      </div>
+    </div>
+    <div class="cv-row">
+      <div class="cv-year">2016</div>
+      <div class="cv-content">
+        <strong>Top 10 Finalist</strong> · UAE AI &amp; Robotics for Good
+        <br><em>Project: Angelegs</em>
+      </div>
+    </div>
+    <div class="cv-row">
+      <div class="cv-year">2012 – 2014</div>
+      <div class="cv-content">
+        <strong>Global Ph.D. Fellowship</strong> · National Research Foundation of Korea
+        <br><em>Study on a mechatronic rehabilitation system incorporating functional electrical stimulation and a robotic exoskeleton</em>
+      </div>
+    </div>
+  </div>
+
+  <!-- Research Grants -->
+  <div class="sub-label">Research Grants</div>
+
+  <div class="grant-group">
+    <div class="grant-group-label">Current</div>
+    <div class="cv-block">
+      <div class="cv-row">
+        <div class="cv-year">2025 – 2029</div>
+        <div class="cv-content">
+          <strong>Development of a wearable robot platform for assisting elderly individuals and paralysis patients using ultra-lightweight, high-power hybrid actuator based on shape memory alloy-coil fiber artificial muscles</strong> (Co-PI)
+          <br><em>형상기억합금 코일 섬유형 인공근육기반 초경량·고출력 하이브리드 구동기를 적용한 고령자 및 하지마비 장애인 보조용 웨어러블 로봇 플랫폼 개발 · 한국연구재단</em>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="grant-group past">
+    <div class="grant-group-label">Past</div>
+    <div class="cv-block">
+      <div class="cv-row">
+        <div class="cv-year">2021 – 2024</div>
+        <div class="cv-content">
+          <strong>A Study on the Built-in Motion Analysis System of Wearable Gait Rehabilitation Robot</strong> (PI)
+          <br><em>착용형 보행재활로봇의 내장형 동작분석 시스템 연구 · 한국연구재단</em>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Patents -->
+  <div class="sub-label">Patents</div>
+  <div class="cv-block">
+    <div class="cv-row">
+      <div class="cv-year">Jul. 2025</div>
+      <div class="cv-content">
+        Motion Intention Measurement Sensor and Motion Intention Measurement System
+        <br><em>Korean Patent No. 10-2841080</em>
+      </div>
+    </div>
+    <div class="cv-row">
+      <div class="cv-year">Feb. 2021</div>
+      <div class="cv-content">
+        Overshoe-Type Device for Measuring Ground Reaction Force
+        <br><em>Korean Patent No. 10-2219037</em>
+      </div>
+    </div>
+    <div class="cv-row">
+      <div class="cv-year">Apr. 2021</div>
+      <div class="cv-content">
+        Driving Unit of a Multi-Joint Robot
+        <br><em>Korean Patent No. 10-2244673</em>
+      </div>
+    </div>
+    <div class="cv-row">
+      <div class="cv-year">Sep. 2020</div>
+      <div class="cv-content">
+        Control Method of a Lower-Body Assistive Robot
+        <br><em>Korean Patent No. 10-2162485</em>
+      </div>
+    </div>
+    <div class="cv-row">
+      <div class="cv-year">Mar. 2020</div>
+      <div class="cv-content">
+        Ground Reaction Force Sensor Module
+        <br><em>Korean Patent No. 10-2095439</em>
+      </div>
+    </div>
+    <div class="cv-row">
+      <div class="cv-year">Oct. 2019</div>
+      <div class="cv-content">
+        Multi-Axis Force Sensor and Multi-Axis Force Sensing System
+        <br><em>Korean Patent No. 10-2041710</em>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer class="footer">
+  <p>
+    HuRI Lab · Department of Human Intelligence and Robot Engineering · Sangmyung University<br>
+    Sangmyungdaegil 31, Cheonan, Korea
+  </p>
+  <p style="margin-top:.5rem;">© 2026 HuRI Lab. All rights reserved.</p>
+</footer>
+
+<script>
+function toggleNav() {
+  document.getElementById('nav-links').classList.toggle('open');
+}
+</script>
+</body>
+</html>

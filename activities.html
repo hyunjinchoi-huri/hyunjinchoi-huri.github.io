@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lab Activities — HuRI Lab</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* ── Filter bar ── */
+    .filter-rows { margin-bottom: 1.75rem; }
+    .filter-bar {
+      display: flex;
+      gap: .5rem;
+      flex-wrap: wrap;
+      margin-bottom: .5rem;
+    }
+    .filter-bar:last-child { margin-bottom: 0; }
+    .filter-btn {
+      font-size: 12.5px;
+      font-weight: 500;
+      padding: 5px 14px;
+      border-radius: 20px;
+      border: 1px solid var(--gray-200);
+      background: var(--white);
+      color: var(--gray-600);
+      cursor: pointer;
+      transition: all .2s;
+      font-family: 'DM Sans', sans-serif;
+    }
+    .filter-btn:hover { border-color: var(--blue); color: var(--blue); }
+    .filter-btn.active { background: var(--navy); color: var(--white); border-color: var(--navy); }
+
+    /* ── Activity grid ── */
+    .activity-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1.1rem;
+    }
+    .activity-card {
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1px solid var(--gray-100);
+      cursor: pointer;
+      transition: transform .2s, box-shadow .2s;
+      background: var(--white);
+    }
+    .activity-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+
+    /* Photo area */
+    .activity-thumb {
+      aspect-ratio: 4/3;
+      overflow: hidden;
+      background: var(--gray-100);
+      position: relative;
+    }
+    .activity-thumb img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform .3s;
+    }
+    .activity-card:hover .activity-thumb img { transform: scale(1.04); }
+
+    /* Placeholder when no image */
+    .activity-placeholder {
+      width: 100%; height: 100%;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 8px; color: var(--gray-400);
+    }
+    .activity-placeholder svg { opacity: .3; }
+    .activity-placeholder span { font-size: 12px; opacity: .55; }
+
+    /* Caption below image */
+    .activity-caption {
+      padding: .6rem .85rem .75rem;
+      border-top: 1px solid var(--gray-100);
+    }
+    .activity-caption-title {
+      font-size: 13.5px; font-weight: 600;
+      color: var(--navy); margin-bottom: 2px;
+    }
+    .activity-caption-desc {
+      font-size: 12px; color: var(--gray-400); line-height: 1.5;
+    }
+
+    /* Modal */
+    .modal-overlay {
+      display: none;
+      position: fixed; inset: 0;
+      background: rgba(10,15,30,.7);
+      z-index: 500;
+      align-items: center; justify-content: center;
+      padding: 1.5rem;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal-box {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      max-width: 560px; width: 100%;
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      position: relative;
+      animation: fadeUp .2s ease;
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .modal-img {
+      width: 100%; aspect-ratio: 4/3;
+      background: var(--gray-100);
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden;
+    }
+    .modal-img img { width: 100%; height: 100%; object-fit: cover; }
+    .modal-img-placeholder {
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 10px; color: var(--gray-400);
+      width: 100%; height: 100%;
+    }
+    .modal-img-placeholder svg { opacity: .2; }
+    .modal-body { padding: 1.25rem 1.5rem 1.5rem; }
+    .modal-title { font-size: 17px; font-weight: 600; color: var(--navy); margin-bottom: .4rem; }
+    .modal-desc { font-size: 14px; color: var(--gray-600); line-height: 1.75; }
+    .modal-close {
+      position: absolute; top: .85rem; right: .85rem;
+      width: 32px; height: 32px;
+      background: rgba(0,0,0,.35); border: none; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; color: #fff; font-size: 18px; line-height: 1;
+      transition: background .2s;
+    }
+    .modal-close:hover { background: rgba(0,0,0,.55); }
+
+    @media (max-width: 600px) {
+      .activity-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html" class="nav-logo"><img src="images/logo_darkbg_trans.png" alt="HuRI Lab" height="36"></a>
+  <button class="nav-toggle" onclick="toggleNav()" aria-label="Toggle navigation">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="pi.html">PI</a></li>
+    <li><a href="research.html">Research</a></li>
+    <li><a href="publications.html">Publications</a></li>
+    <li><a href="members.html">Members</a></li>
+    <li><a href="activities.html" class="active">Activities</a></li>
+  </ul>
+</nav>
+
+<div class="page-hero">
+  <h1>Lab Activities</h1>
+  <p>Conferences, events, and lab life</p>
+</div>
+
+<div class="container">
+
+  <div class="filter-rows">
+    <div class="filter-bar" id="filter-bar-year">
+      <button class="filter-btn active" data-filter="all">All</button>
+    </div>
+  </div>
+
+  <div class="activity-grid" id="activity-grid"></div>
+
+</div>
+
+<!-- Modal -->
+<div class="modal-overlay" id="modal" onclick="handleOverlayClick(event)">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div class="modal-img" id="modal-img">
+      <div class="modal-img-placeholder">
+        <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+      </div>
+    </div>
+    <div class="modal-body">
+      <div class="modal-title" id="modal-title"></div>
+      <div class="modal-desc" id="modal-desc"></div>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <p>
+    HuRI Lab · Department of Human Intelligence and Robot Engineering · Sangmyung University<br>
+    Sangmyungdaegil 31, Cheonan, Korea
+  </p>
+  <p style="margin-top:.5rem;">© 2026 HuRI Lab. All rights reserved.</p>
+</footer>
+
+<script>
+const PLACEHOLDER_HTML = `
+  <div class="activity-placeholder">
+    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+      <rect x="3" y="3" width="18" height="18" rx="2"/>
+      <circle cx="8.5" cy="8.5" r="1.5"/>
+      <polyline points="21 15 16 10 5 21"/>
+    </svg>
+    <span>사진 없음</span>
+  </div>`;
+
+const MODAL_PLACEHOLDER_HTML = `
+  <div class="modal-img-placeholder">
+    <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+      <rect x="3" y="3" width="18" height="18" rx="2"/>
+      <circle cx="8.5" cy="8.5" r="1.5"/>
+      <polyline points="21 15 16 10 5 21"/>
+    </svg>
+  </div>`;
+
+function toggleNav() {
+  document.getElementById('nav-links').classList.toggle('open');
+}
+
+function thumbError(img) {
+  img.parentElement.innerHTML = PLACEHOLDER_HTML;
+}
+
+function openModal(title, desc, imgSrc) {
+  document.getElementById('modal-title').textContent = title;
+  document.getElementById('modal-desc').textContent = desc;
+  const imgContainer = document.getElementById('modal-img');
+  if (imgSrc) {
+    const img = document.createElement('img');
+    img.src = imgSrc;
+    img.alt = title;
+    img.onerror = () => { imgContainer.innerHTML = MODAL_PLACEHOLDER_HTML; };
+    imgContainer.innerHTML = '';
+    imgContainer.appendChild(img);
+  } else {
+    imgContainer.innerHTML = MODAL_PLACEHOLDER_HTML;
+  }
+  document.getElementById('modal').classList.add('open');
+}
+
+function closeModal() {
+  document.getElementById('modal').classList.remove('open');
+}
+
+function handleOverlayClick(e) {
+  if (e.target === document.getElementById('modal')) closeModal();
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeModal();
+});
+
+let yearFilter = 'all';
+let activityData = [];
+
+function filterActivities() {
+  document.querySelectorAll('#activity-grid .activity-card').forEach(card => {
+    const matchYear = yearFilter === 'all' || card.dataset.year === yearFilter;
+    card.style.display = matchYear ? '' : 'none';
+  });
+}
+
+function openModalByIndex(i) {
+  const a = activityData[i];
+  const imgSrc = a.image ? `images/activities/${a.image}` : '';
+  openModal(a.title, a.long_desc || a.short_desc, imgSrc);
+}
+
+function renderCards(data) {
+  const grid = document.getElementById('activity-grid');
+  grid.innerHTML = data.map((a, i) => {
+    const imgSrc = a.image ? `images/activities/${a.image}` : '';
+    const thumb = imgSrc
+      ? `<img src="${imgSrc}" alt="${a.title}" onerror="thumbError(this)">`
+      : PLACEHOLDER_HTML;
+    return `
+      <div class="activity-card" data-year="${a.year}" data-type="${a.type}"
+           onclick="openModalByIndex(${i})">
+        <div class="activity-thumb">${thumb}</div>
+        <div class="activity-caption">
+          <div class="activity-caption-title">${a.title}</div>
+          <div class="activity-caption-desc">${a.short_desc}</div>
+        </div>
+      </div>`;
+  }).join('');
+}
+
+fetch('data/activities.json')
+  .then(r => r.json())
+  .then(data => {
+    data.sort((a, b) => b.year - a.year || b.month - a.month);
+    activityData = data;
+
+    const years = [...new Set(data.map(a => a.year))].sort((a, b) => b - a);
+    const yearBar = document.getElementById('filter-bar-year');
+    yearBar.innerHTML =
+      `<button class="filter-btn active" data-filter="all">All</button>`
+      + years.map(y => `<button class="filter-btn" data-filter="${y}">${y}</button>`).join('');
+
+    yearBar.addEventListener('click', e => {
+      const btn = e.target.closest('.filter-btn');
+      if (!btn) return;
+      yearBar.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      yearFilter = btn.dataset.filter;
+      filterActivities();
+    });
+
+    renderCards(data);
+  });
+</script>
+</body>
+</html>

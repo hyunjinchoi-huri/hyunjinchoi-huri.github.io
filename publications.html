@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Publications — HuRI Lab</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* ── Filter bars ── */
+    .filter-rows { margin-bottom: 1.75rem; }
+    .filter-bar {
+      display: flex;
+      gap: .5rem;
+      flex-wrap: wrap;
+      margin-bottom: .5rem;
+    }
+    .filter-bar:last-child { margin-bottom: 0; }
+    .filter-btn {
+      font-size: 12.5px;
+      font-weight: 500;
+      padding: 5px 14px;
+      border-radius: 20px;
+      border: 1px solid var(--gray-200);
+      background: var(--white);
+      color: var(--gray-600);
+      cursor: pointer;
+      transition: all .2s;
+      font-family: 'DM Sans', sans-serif;
+    }
+    .filter-btn:hover { border-color: var(--blue); color: var(--blue); }
+    .filter-btn.active { background: var(--navy); color: var(--white); border-color: var(--navy); }
+
+    /* ── Pub list ── */
+    .pub-list { display: flex; flex-direction: column; gap: 1rem; }
+
+    .pub-item {
+      background: var(--white);
+      border: 1px solid var(--gray-100);
+      border-radius: var(--radius-md);
+      padding: 1.2rem 1.5rem;
+      transition: box-shadow .15s;
+    }
+    .pub-item:hover { box-shadow: var(--shadow-sm); }
+
+    .pub-top { display: flex; gap: 1rem; align-items: flex-start; }
+    .pub-year {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--blue);
+      background: var(--blue-pale);
+      padding: 3px 10px;
+      border-radius: var(--radius-sm);
+      white-space: nowrap;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .pub-main { flex: 1; min-width: 0; }
+    .pub-title {
+      font-size: 14.5px;
+      font-weight: 600;
+      color: var(--navy);
+      line-height: 1.5;
+      margin-bottom: .3rem;
+    }
+    .pub-authors { font-size: 12.5px; color: var(--gray-400); margin-bottom: .25rem; }
+    .pub-authors strong { color: var(--gray-600); font-weight: 600; }
+    .pub-venue { font-size: 12.5px; color: var(--blue); font-style: italic; margin-bottom: .5rem; }
+
+    .pub-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      align-items: center;
+      margin-top: .45rem;
+    }
+
+    /* abstract toggle */
+    .abs-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 11.5px;
+      font-weight: 500;
+      padding: 3px 10px;
+      border-radius: 20px;
+      border: 1px solid var(--gray-200);
+      background: var(--white);
+      color: var(--gray-600);
+      cursor: pointer;
+      transition: all .2s;
+      font-family: 'DM Sans', sans-serif;
+    }
+    .abs-toggle:hover { border-color: var(--blue); color: var(--blue); }
+    .abs-toggle .arrow { transition: transform .2s; display: inline-block; }
+    .abs-toggle.open .arrow { transform: rotate(180deg); }
+
+    /* doi button */
+    .doi-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 11.5px;
+      font-weight: 500;
+      padding: 3px 10px;
+      border-radius: 20px;
+      border: 1px solid var(--gray-200);
+      background: var(--white);
+      color: var(--gray-600);
+      text-decoration: none;
+      transition: all .2s;
+    }
+    .doi-link:hover { border-color: var(--blue); color: var(--blue); text-decoration: none; }
+    .doi-link svg { width: 11px; height: 11px; }
+
+    /* abstract body */
+    .pub-abstract {
+      display: none;
+      margin-top: .85rem;
+      padding-top: .85rem;
+      border-top: 1px solid var(--gray-100);
+      font-size: 13.5px;
+      color: var(--gray-600);
+      line-height: 1.8;
+    }
+    .pub-abstract.open { display: block; }
+
+    @media (max-width: 600px) {
+      .pub-top { flex-direction: column; gap: .5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html" class="nav-logo"><img src="images/logo_darkbg_trans.png" alt="HuRI Lab" height="36"></a>
+  <button class="nav-toggle" onclick="toggleNav()" aria-label="Toggle navigation">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="pi.html">PI</a></li>
+    <li><a href="research.html">Research</a></li>
+    <li><a href="publications.html" class="active">Publications</a></li>
+    <li><a href="members.html">Members</a></li>
+    <li><a href="activities.html">Activities</a></li>
+  </ul>
+</nav>
+
+<div class="page-hero">
+  <h1>Publications</h1>
+  <p>* corresponding author</p>
+</div>
+
+<div class="container">
+
+  <!-- Filter -->
+  <div class="filter-rows">
+    <div class="filter-bar" id="filter-bar">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="journal">Journal</button>
+      <button class="filter-btn" data-filter="conference">Conference</button>
+      <button class="filter-btn" data-filter="intl">International</button>
+      <button class="filter-btn" data-filter="dom">Domestic</button>
+    </div>
+    <div class="filter-bar" id="filter-bar-year">
+      <!-- populated by JS after JSON load -->
+    </div>
+  </div>
+
+  <div class="sub-label" id="label-journal">Journal Articles</div>
+  <div class="pub-list" id="list-journal"></div>
+
+  <div class="sub-label" id="label-conference" style="margin-top:2.5rem;">Conference Papers</div>
+  <div class="pub-list" id="list-conference"></div>
+
+</div><!-- /container -->
+
+<footer class="footer">
+  <p>
+    HuRI Lab · Department of Human Intelligence and Robot Engineering · Sangmyung University<br>
+    Sangmyungdaegil 31, Cheonan, Korea
+  </p>
+  <p style="margin-top:.5rem;">© 2026 HuRI Lab. All rights reserved.</p>
+</footer>
+
+<script>
+function toggleNav() {
+  document.getElementById('nav-links').classList.toggle('open');
+}
+
+function toggleAbs(btn) {
+  const abs = btn.closest('.pub-main').querySelector('.pub-abstract');
+  const isOpen = abs.classList.toggle('open');
+  btn.classList.toggle('open', isOpen);
+  btn.querySelector('.arrow').textContent = isOpen ? '▴' : '▾';
+  btn.childNodes[1].textContent = isOpen ? ' Close' : ' Abstract';
+}
+
+const DOI_ICON = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="11" height="11"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>`;
+
+function renderAuthors(raw) {
+  return raw.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+}
+
+function buildCard(pub) {
+  const scopeBadgeClass = pub.scope === 'intl' ? 'badge-intl' : 'badge-dom';
+  const scopeLabel = pub.scope === 'intl' ? 'International' : 'Domestic';
+  const typeBadgeClass = pub.type === 'journal' ? 'badge-journal' : 'badge-conf';
+  const typeLabel = pub.type === 'journal' ? 'Journal' : 'Conference';
+
+  const doiBtn = pub.doi
+    ? `<a class="doi-link" href="https://doi.org/${pub.doi}" target="_blank">${DOI_ICON} DOI</a>`
+    : '';
+
+  const absBtn = pub.abstract
+    ? `<button class="abs-toggle" onclick="toggleAbs(this)"><span class="arrow">▾</span> Abstract</button>`
+    : '';
+
+  const absBody = pub.abstract
+    ? `<div class="pub-abstract">${pub.abstract}</div>`
+    : '';
+
+  const awardTag = pub.award
+    ? `<span style="font-size:12px;color:#2e7d32;font-weight:600;">${pub.award}</span>`
+    : '';
+
+  return `
+    <div class="pub-item" data-type="${pub.type}" data-scope="${pub.scope}" data-year="${pub.year}">
+      <div class="pub-top">
+        <span class="pub-year">${pub.year}</span>
+        <div class="pub-main">
+          <div class="pub-title">${pub.title}</div>
+          <div class="pub-authors">${renderAuthors(pub.authors)}</div>
+          <div class="pub-venue">${pub.venue}${pub.award ? ' &nbsp;' + awardTag : ''}</div>
+          <div class="pub-meta">
+            <span class="badge ${scopeBadgeClass}">${scopeLabel}</span>
+            <span class="badge ${typeBadgeClass}">${typeLabel}</span>
+            ${absBtn}
+            ${doiBtn}
+          </div>
+          ${absBody}
+        </div>
+      </div>
+    </div>`;
+}
+
+let typeFilter = 'all';
+let yearFilter = 'all';
+
+function applyFilters() {
+  const items = document.querySelectorAll('.pub-item');
+  const listJournal = document.getElementById('list-journal');
+  const listConference = document.getElementById('list-conference');
+
+  items.forEach(item => {
+    const matchType = typeFilter === 'all'
+      || (typeFilter === 'journal'    && item.dataset.type  === 'journal')
+      || (typeFilter === 'conference' && item.dataset.type  === 'conference')
+      || (typeFilter === 'intl'       && item.dataset.scope === 'intl')
+      || (typeFilter === 'dom'        && item.dataset.scope === 'dom');
+    const matchYear = yearFilter === 'all' || item.dataset.year === yearFilter;
+    item.style.display = (matchType && matchYear) ? '' : 'none';
+  });
+
+  const journalVisible = [...listJournal.querySelectorAll('.pub-item')].some(i => i.style.display !== 'none');
+  const confVisible    = [...listConference.querySelectorAll('.pub-item')].some(i => i.style.display !== 'none');
+  document.getElementById('label-journal').style.display    = journalVisible ? '' : 'none';
+  document.getElementById('label-conference').style.display = confVisible    ? '' : 'none';
+}
+
+document.getElementById('filter-bar').addEventListener('click', e => {
+  const btn = e.target.closest('.filter-btn');
+  if (!btn) return;
+  document.querySelectorAll('#filter-bar .filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  typeFilter = btn.dataset.filter;
+  applyFilters();
+});
+
+document.getElementById('filter-bar-year').addEventListener('click', e => {
+  const btn = e.target.closest('.filter-btn');
+  if (!btn) return;
+  document.querySelectorAll('#filter-bar-year .filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  yearFilter = btn.dataset.filter;
+  applyFilters();
+});
+
+fetch('data/publications.json')
+  .then(r => r.json())
+  .then(pubs => {
+    pubs.sort((a, b) => b.year - a.year || (b.month || 0) - (a.month || 0));
+
+    const years = [...new Set(pubs.map(p => p.year))].sort((a, b) => b - a);
+    document.getElementById('filter-bar-year').innerHTML =
+      `<button class="filter-btn active" data-filter="all">All Years</button>`
+      + years.map(y => `<button class="filter-btn" data-filter="${y}">${y}</button>`).join('');
+
+    const journals    = pubs.filter(p => p.type === 'journal');
+    const conferences = pubs.filter(p => p.type === 'conference');
+    document.getElementById('list-journal').innerHTML    = journals.map(buildCard).join('');
+    document.getElementById('list-conference').innerHTML = conferences.map(buildCard).join('');
+  })
+  .catch(() => {
+    document.getElementById('list-journal').innerHTML = '<p style="color:var(--gray-400);font-size:13.5px;">Failed to load publications.</p>';
+  });
+</script>
+</body>
+</html>

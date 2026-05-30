@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Research — HuRI Lab</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .research-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
+    .research-card {
+      background: var(--gray-50);
+      border: 1px solid var(--gray-100);
+      border-left: 4px solid var(--blue);
+      border-radius: var(--radius-md);
+      padding: 1.75rem 2rem;
+      transition: box-shadow .2s;
+    }
+    .research-card:hover { box-shadow: var(--shadow-md); }
+
+    .research-card-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    .research-icon {
+      width: 44px; height: 44px; flex-shrink: 0;
+      background: var(--blue-pale);
+      border-radius: var(--radius-sm);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .research-icon svg { width: 22px; height: 22px; stroke: var(--blue); }
+
+    .research-card h3 { font-size: 17px; font-weight: 600; color: var(--navy); margin-bottom: .15rem; }
+    .research-card .summary { font-size: 13px; color: var(--gray-400); }
+    .research-card .desc {
+      font-size: 14px; color: var(--gray-600); line-height: 1.85;
+      margin-bottom: 1.1rem;
+    }
+    .research-divider { border: none; border-top: 1px solid var(--gray-200); margin: 1rem 0; }
+
+    .related-pubs { margin-top: .75rem; }
+    .related-pubs-label {
+      font-size: 11.5px; font-weight: 600;
+      letter-spacing: .06em; color: var(--gray-400);
+      text-transform: uppercase; margin-bottom: .5rem;
+    }
+    .related-pub-link {
+      display: block;
+      font-size: 13px;
+      color: var(--blue);
+      text-decoration: none;
+      padding: .3rem 0;
+      border-bottom: 1px solid var(--gray-100);
+      line-height: 1.5;
+    }
+    .related-pub-link:last-child { border-bottom: none; }
+    .related-pub-link:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html" class="nav-logo"><img src="images/logo_darkbg_trans.png" alt="HuRI Lab" height="36"></a>
+  <button class="nav-toggle" onclick="toggleNav()" aria-label="Toggle navigation">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="pi.html">PI</a></li>
+    <li><a href="research.html" class="active">Research</a></li>
+    <li><a href="publications.html">Publications</a></li>
+    <li><a href="members.html">Members</a></li>
+    <li><a href="activities.html">Activities</a></li>
+  </ul>
+</nav>
+
+<div class="page-hero">
+  <h1>Research</h1>
+  <p>HuRI Lab focuses on human-centered wearable robotic systems that closely interact with the human body.</p>
+</div>
+
+<div class="container">
+
+  <p style="font-size:15px; color:var(--gray-600); line-height:1.85; margin-bottom:2.5rem; max-width:680px;">
+    Our research integrates wearable robots, sensing technologies, gait analysis, and human–machine interfaces
+    to improve human mobility, rehabilitation outcomes, and accessibility.
+    We pursue four interconnected research areas: exoskeleton systems, gait analysis, wearable force sensing,
+    and assistive human–machine interfaces.
+  </p>
+
+  <div class="research-grid">
+
+    <!-- Area 1: Wearable Robots & Exoskeletons -->
+    <div class="research-card">
+      <div class="research-card-header">
+        <div class="research-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18"/></svg>
+        </div>
+        <div>
+          <h3>Wearable Robots for Assistance &amp; Rehabilitation</h3>
+          <div class="summary">Hip/lower-limb exoskeletons · Torque control · Clinical validation</div>
+        </div>
+      </div>
+      <p class="desc">
+        HuRI Lab develops wearable robotic systems—particularly hip-assistive and lower-limb exoskeletons—to support
+        people with motor impairments in daily activities and clinical rehabilitation.
+        Our work spans joint-torque-based assistance strategies, user interface design for powered exoskeletons,
+        and real-world validation through laboratory and clinical studies.
+        We draw on extensive experience with full-body exoskeleton platforms (WalkON Suit) to guide
+        system-level design decisions that prioritize safety, intuitiveness, and long-term wearability.
+      </p>
+      <div class="tag-list">
+        <span class="tag">Hip-assistive exoskeletons</span>
+        <span class="tag">Joint torque assistance</span>
+        <span class="tag">Rehabilitation robotics</span>
+        <span class="tag">Exoskeleton user interfaces</span>
+      </div>
+      <div class="related-pubs">
+        <div class="related-pubs-label" style="margin-top:1rem;">Related Publications</div>
+        <a href="publications.html" class="related-pub-link">
+          → Real-time Spatiotemporal Gait Analysis Using a Hip Assistive Wearable Robot · IEEE Access 2026
+        </a>
+        <a href="publications.html" class="related-pub-link">
+          → Assistance of a Person with Muscular Weakness Using a Joint-Torque-Assisting Exoskeletal Robot · MDPI Applied Sciences 2021
+        </a>
+        <a href="publications.html" class="related-pub-link">
+          → The History and Future of the WalkON Suit: A Powered Exoskeleton for People With Disabilities · IEEE Industrial Electronics Magazine 2022
+        </a>
+        <a href="publications.html" class="related-pub-link">
+          → A User Interface System with See-Through Display for WalkON Suit · MDPI Applied Sciences 2018
+        </a>
+      </div>
+    </div>
+
+    <!-- Area 2: Gait Analysis & Human Motion Understanding -->
+    <div class="research-card">
+      <div class="research-card-header">
+        <div class="research-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <div>
+          <h3>Gait Analysis &amp; Human Motion Understanding</h3>
+          <div class="summary">Gait event detection · Kinematic estimation · Wearable-based analysis</div>
+        </div>
+      </div>
+      <p class="desc">
+        We study human gait and movement patterns using wearable sensing systems to extract clinically and
+        biomechanically meaningful information—without relying on laboratory-bound motion capture equipment.
+        Our research covers gait event detection (e.g., initial contact timing), recognition of diverse locomotion
+        modes including stair climbing, and data-driven estimation of joint kinematics from on-body sensors.
+        These methods directly inform assistive control strategies and enable quantitative gait assessment
+        in real-world settings, including applications for neurological conditions such as Parkinson's disease.
+      </p>
+      <div class="tag-list">
+        <span class="tag">Gait event detection</span>
+        <span class="tag">Locomotion mode recognition</span>
+        <span class="tag">Knee/hip kinematic estimation</span>
+        <span class="tag">Parkinsonian gait analysis</span>
+      </div>
+      <div class="related-pubs">
+        <div class="related-pubs-label" style="margin-top:1rem;">Related Publications</div>
+        <a href="publications.html" class="related-pub-link">
+          → Real-time Gait Recognition of Multiple Stair-climbing Modes for Hip-assisting Wearable Robots · IFAC Symposium on Robotics 2025
+        </a>
+        <a href="publications.html" class="related-pub-link">
+          → Initial-contact-timing Estimation Based on Supervised Learning in a Hip-assistive Wearable Robot · J. Institute of Control, Robotics and Systems 2026
+        </a>
+        <a href="publications.html" class="related-pub-link">
+          → Wearable Robot Embedded Human Muscle Activity Monitoring System and Human-Oriented Joint Torque Calculation · IFAC World Congress 2023
+        </a>
+      </div>
+    </div>
+
+    <!-- Area 3: Wearable Sensors & Force Sensing -->
+    <div class="research-card">
+      <div class="research-card-header">
+        <div class="research-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+        </div>
+        <div>
+          <h3>Wearable Sensors &amp; Force Measurement</h3>
+          <div class="summary">Soft sensors · Multi-axis force sensing · Insole-based GRF estimation</div>
+        </div>
+      </div>
+      <p class="desc">
+        HuRI Lab designs novel wearable sensing hardware to capture the physical signals that govern human movement
+        and human–robot interaction. Our work ranges from soft pneumatic three-axis force sensors and
+        large-scale multi-axis soft sensor units to leaf-inspired FSR arrays embedded in insoles for
+        mobile ground reaction force (GRF) estimation.
+        These sensor systems provide the foundational data streams that power gait analysis, exoskeleton control,
+        and human intent recognition, and are designed to be compact, robust, and deployable outside the laboratory.
+      </p>
+      <div class="tag-list">
+        <span class="tag">Soft pneumatic force sensors</span>
+        <span class="tag">Multi-axis force sensing</span>
+        <span class="tag">FSR insole systems</span>
+        <span class="tag">Ground reaction force estimation</span>
+      </div>
+      <div class="related-pubs">
+        <div class="related-pubs-label" style="margin-top:1rem;">Related Publications</div>
+        <a href="publications.html" class="related-pub-link">
+          → A Soft Three-Axis Force Sensor Based on Radially Symmetric Pneumatic Chambers · IEEE Sensors 2019
+        </a>
+        <a href="publications.html" class="related-pub-link">
+          → Soft Sensor Unit for Measurement of Large Scale Multi-axis Force · Asian Control Conference (ASCC) 2022
+        </a>
+        <a href="publications.html" class="related-pub-link">
+          → Leaf-Inspired FSR Array and Insole-Type Sensor Module for Mobile Three-Dimensional Ground Reaction Force Estimation · ICRA 2024
+        </a>
+      </div>
+    </div>
+
+    <!-- Area 4: Human–Machine Interface & Assistive Technology -->
+    <div class="research-card">
+      <div class="research-card-header">
+        <div class="research-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M18 11V6a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v0M14 10V4a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v2M10 10.5V6a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v8"/><path d="M18 11a2 2 0 1 1 4 0v3a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/></svg>
+        </div>
+        <div>
+          <h3>Human–Robot Interaction &amp; Assistive Technology</h3>
+          <div class="summary">Gesture recognition · Muscle activity sensing · Accessibility systems</div>
+        </div>
+      </div>
+      <p class="desc">
+        This research area focuses on enabling rich, natural communication between humans and machines through
+        wearable interfaces that detect gesture, muscle activity, and body posture.
+        We develop pneumatic mechanomyography (pMMG) and pressure-sensor-based systems for high-accuracy
+        hand gesture recognition, and explore their application to robot control, rehabilitation, and
+        exercise monitoring.
+      </p>
+      <div class="tag-list">
+        <span class="tag">Pneumatic mechanomyography (pMMG)</span>
+        <span class="tag">Hand gesture recognition</span>
+        <span class="tag">Muscle activity monitoring</span>
+        <span class="tag">Vision-based assistive systems</span>
+      </div>
+      <div class="related-pubs">
+        <div class="related-pubs-label" style="margin-top:1rem;">Related Publications</div>
+        <a href="publications.html" class="related-pub-link">
+          → High-Accuracy Hand Gesture Recognition on the Wrist Tendon Group Using Pneumatic Mechanomyography (pMMG) · IEEE Transactions on Industrial Informatics 2023
+        </a>
+        <a href="publications.html" class="related-pub-link">
+          → Feasibility of pMMG Sensors for Muscle Activity Assessment in Squat Exercises · ICCAS 2024
+        </a>
+        <a href="publications.html" class="related-pub-link">
+          → Development of Wireless Pneumatic Myography Sensor for Real-time Muscle Contraction Measurement · ICCAS 2021
+        </a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<footer class="footer">
+  <p>
+    HuRI Lab · Department of Human Intelligence and Robot Engineering · Sangmyung University<br>
+    Sangmyungdaegil 31, Cheonan, Korea
+  </p>
+  <p style="margin-top:.5rem;">© 2026 HuRI Lab. All rights reserved.</p>
+</footer>
+
+<script>
+function toggleNav() {
+  document.getElementById('nav-links').classList.toggle('open');
+}
+</script>
+</body>
+</html>

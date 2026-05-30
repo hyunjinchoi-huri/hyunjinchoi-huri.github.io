@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 scripts/build_publications.py)",
+      "Bash(python3 -c ' *)",
+      "Bash(xargs python3 -c ' *)"
+    ]
+  }
+}

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Members — HuRI Lab</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .members-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 1.1rem;
+    }
+    .member-card {
+      background: var(--white);
+      border: 1px solid var(--gray-100);
+      border-radius: var(--radius-md);
+      padding: 1.25rem 1rem;
+      text-align: center;
+      transition: box-shadow .2s, transform .2s;
+    }
+    .member-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+    .member-photo {
+      width: 72px; height: 72px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 0 auto .75rem;
+      display: block;
+    }
+    .member-avatar {
+      width: 72px; height: 72px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 100%);
+      margin: 0 auto .75rem;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px; font-weight: 600; color: var(--white);
+    }
+    .member-name { font-size: 14px; font-weight: 600; color: var(--navy); margin-bottom: 3px; }
+    .member-role { font-size: 12px; color: var(--gray-400); margin-bottom: 6px; }
+    .member-info { font-size: 11.5px; color: var(--gray-400); line-height: 1.5; }
+
+    /* Alumni table */
+    .alumni-table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+    .alumni-table th {
+      text-align: left; font-size: 11.5px; font-weight: 600;
+      letter-spacing: .07em; color: var(--gray-400);
+      padding: 0 1rem .7rem 0;
+      border-bottom: 2px solid var(--gray-100);
+      text-transform: uppercase;
+    }
+    .alumni-table td {
+      padding: .65rem 1rem .65rem 0;
+      border-bottom: 1px solid var(--gray-100);
+      color: var(--gray-600);
+      vertical-align: middle;
+    }
+    .alumni-table td:first-child { color: var(--navy); font-weight: 500; }
+    .alumni-table tr:last-child td { border-bottom: none; }
+
+    /* Alumni subsections */
+    .alumni-sub-label {
+      font-size: 11.5px;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      margin: 1.5rem 0 .6rem;
+    }
+    .alumni-name-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .35rem .75rem;
+      font-size: 13.5px;
+      color: var(--gray-600);
+    }
+    .alumni-name-list span::after { content: '·'; margin-left: .75rem; color: var(--gray-200); }
+    .alumni-name-list span:last-child::after { content: ''; margin-left: 0; }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html" class="nav-logo"><img src="images/logo_darkbg_trans.png" alt="HuRI Lab" height="36"></a>
+  <button class="nav-toggle" onclick="toggleNav()" aria-label="Toggle navigation">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="pi.html">PI</a></li>
+    <li><a href="research.html">Research</a></li>
+    <li><a href="publications.html">Publications</a></li>
+    <li><a href="members.html" class="active">Members</a></li>
+    <li><a href="activities.html">Activities</a></li>
+  </ul>
+</nav>
+
+<div class="page-hero">
+  <h1>Members</h1>
+  <p>HuRI Lab — Current members and alumni</p>
+</div>
+
+<div class="container">
+
+  <!-- Principal Investigator -->
+  <div class="sub-label" style="margin-top:0;">Principal Investigator</div>
+  <div class="members-grid" style="margin-bottom:2rem;">
+    <a href="pi.html" class="member-card" style="text-decoration:none;">
+      <img src="images/members/Choi_HJ.png" alt="Hyunjin Choi" class="member-photo">
+      <div class="member-name">Hyunjin Choi</div>
+      <div class="member-role">Assistant Professor</div>
+    </a>
+  </div>
+
+  <!-- Current Members -->
+  <div class="sub-label">Current Members</div>
+  <div class="members-grid" style="margin-bottom:3rem;">
+    <div class="member-card">
+      <img src="images/members/Koo_SM.jpeg" alt="Seon-Min Koo" class="member-photo">
+      <div class="member-name">Seon-Min Koo</div>
+      <div class="member-role">M.S. Student</div>
+    </div>
+    <div class="member-card">
+      <img src="images/members/Jeong_MK.jpeg" alt="Min-Gyu Jeong" class="member-photo">
+      <div class="member-name">Min-Gyu Jeong</div>
+      <div class="member-role">Undergraduate Intern</div>
+    </div>
+    <div class="member-card">
+      <img src="images/members/Jang_WH.jpg" alt="Woo-Hyeok Jang" class="member-photo">
+      <div class="member-name">Woo-Hyeok Jang</div>
+      <div class="member-role">Undergraduate Intern</div>
+    </div>
+  </div>
+
+  <!-- Alumni -->
+  <div class="sub-label" style="margin-top:0;">Alumni</div>
+
+  <div class="alumni-sub-label">M.S. Graduates</div>
+  <table class="alumni-table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Degree</th>
+        <th>Year</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Heechan Kim</td>
+        <td><span class="badge badge-ms">M.S.</span></td>
+        <td>2025</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="alumni-sub-label">Undergraduate Researchers</div>
+  <div class="alumni-name-list">
+    <span>Jung-Hee Jo</span>
+    <span>Yooha Koo</span>
+    <span>Minkyeong Kim</span>
+    <span>Junseong Yeo</span>
+    <span>Heonsoo Choi</span>
+    <span>Jihoon Seong</span>
+    <span>Hyejeong Choi</span>
+    <span>Bokyong Kim</span>
+  </div>
+
+  <div class="alumni-sub-label">Undergraduate Interns</div>
+  <div class="alumni-name-list">
+    <span>Kyung-Hun Min</span>
+    <span>Si-Eun Kwon</span>
+    <span>Eun-Ji Lee</span>
+  </div>
+
+  <div class="alumni-sub-label">Co-advised Students</div>
+  <div class="alumni-name-list">
+    <span>Eunseok Song (M.S., KAIST)</span>
+  </div>
+
+</div>
+
+<footer class="footer">
+  <p>
+    HuRI Lab · Department of Human Intelligence and Robot Engineering · Sangmyung University<br>
+    Sangmyungdaegil 31, Cheonan, Korea
+  </p>
+  <p style="margin-top:.5rem;">© 2026 HuRI Lab. All rights reserved.</p>
+</footer>
+
+<script>
+function toggleNav() {
+  document.getElementById('nav-links').classList.toggle('open');
+}
+</script>
+</body>
+</html>

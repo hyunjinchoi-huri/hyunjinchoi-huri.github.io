@@ -1,0 +1,164 @@
+[
+  {
+    "year": 2026,
+    "month": 2,
+    "title": "KRoC 2026",
+    "short_desc": "Pyeongchang",
+    "long_desc": "강원도 평창에서 열린 제21회 한국로봇종합학술대회에서 포스터발표를 했습니다.",
+    "image": "2026_KRoC.jpeg",
+    "type": "conference"
+  },
+  {
+    "year": 2025,
+    "month": 12,
+    "title": "Year-end Party 2025",
+    "short_desc": "연구실 송년회",
+    "long_desc": "합정역 근처 파티룸에서 케이크만들기와 마니또 선물교환식을 했습니다.",
+    "image": "2025_12_farewell.jpg",
+    "type": "lablife"
+  },
+  {
+    "year": 2025,
+    "month": 7,
+    "title": "IFAC Symposium on Mechatronics & Robotics 2025",
+    "short_desc": "Paris, France",
+    "long_desc": "센강 유람선에서의 멋진 만찬 🛳️",
+    "image": "2025_7_IFAC.png",
+    "type": "conference"
+  },
+  {
+    "year": 2025,
+    "month": 6,
+    "title": "ICROS 2025",
+    "short_desc": "Jeonju",
+    "long_desc": "제어로봇시스템학회 학술대회에서 포스터발표를 했습니다. GIST에서 박사과정중인 김민경 동문과 함께.",
+    "image": "2025_6_ICROS1.JPG",
+    "type": "conference"
+  },
+  {
+    "year": 2025,
+    "month": 2,
+    "title": "KRoC 2025",
+    "short_desc": "Pyeongchang",
+    "long_desc": "한국로봇종합학술대회에서 포스터 발표를 했습니다.",
+    "image": "2025_2_KRoC.png",
+    "type": "conference"
+  },
+  {
+    "year": 2024,
+    "month": 12,
+    "title": "Year-end Party 2024",
+    "short_desc": "연구실 송년회",
+    "long_desc": "캠핑장 컨셉의 파티룸에서 🏕️",
+    "image": "2024_12_Farewell.JPG",
+    "type": "lablife"
+  },
+  {
+    "year": 2024,
+    "month": 6,
+    "title": "ICROS 2024",
+    "short_desc": "Academic Family Reuinion, Daejeon",
+    "long_desc": "제어로봇시스템학회 학술대회에서 만난 휴리랩 동문",
+    "image": "2024_6_ICROS.JPG",
+    "type": "conference"
+  },
+  {
+    "year": 2024,
+    "month": 6,
+    "title": "International Internship 2024",
+    "short_desc": "Students from UPEC, France",
+    "long_desc": "프랑스 UPEC 대학 학생들이 우리 연구실과 KAIST Exo Lab 에서 10주 인턴십을 마무리했습니다.",
+    "image": "2024_6_Intern.JPG",
+    "type": "lablife"
+  },
+  {
+    "year": 2023,
+    "month": 12,
+    "title": "Year-end Party 2023",
+    "short_desc": "연구실 송년회",
+    "long_desc": "🎄 크리스마스 트리가 예뻣던 강남 어딘가 파티룸에서",
+    "image": "2023_12_Farewell.JPG",
+    "type": "lablife"
+  },
+  {
+    "year": 2023,
+    "month": 7,
+    "title": "IFAC World Congress 2023",
+    "short_desc": "Yokohama, Japan",
+    "long_desc": "일본 요코하마에서 열린 IFAC WC에서 interactive poster 발표를 했습니다.",
+    "image": "2023_7_IFAC2.JPG",
+    "type": "conference"
+  },
+  {
+    "year": 2023,
+    "month": 7,
+    "title": "IFAC World Congress 2023",
+    "short_desc": "Yokohama, Japan",
+    "long_desc": "일본 요코하마에서 열린 IFAC WC에서 interactive poster 발표를 했습니다.",
+    "image": "2023_7_IFAC1.JPG",
+    "type": "conference"
+  },
+  {
+    "year": 2023,
+    "month": 2,
+    "title": "KRoC 2023",
+    "short_desc": "Pyeongchang",
+    "long_desc": "한국로봇종합학술대회에서 포스터 발표를 했습니다.",
+    "image": "2023_2_KRoC1.png",
+    "type": "conference"
+  },
+  {
+    "year": 2023,
+    "month": 2,
+    "title": "KRoC 2023",
+    "short_desc": "Pyeongchang",
+    "long_desc": "한국로봇종합학술대회에서 포스터 발표를 했습니다.",
+    "image": "2023_2_KRoC.JPG",
+    "type": "conference"
+  },
+  {
+    "year": 2023,
+    "month": 2,
+    "title": "Graduation Day, 2023",
+    "short_desc": "졸업식 🎓",
+    "long_desc": "여러분의 앞날을 응원합니다 💐",
+    "image": "2023_2_Grad.JPG",
+    "type": "lablife"
+  },
+  {
+    "year": 2022,
+    "month": 12,
+    "title": "Year-end Party 2022",
+    "short_desc": "연구실 송년회",
+    "long_desc": "강남역 파티룸에서 연구실 송년회",
+    "image": "2022_12_Farewell.JPG",
+    "type": "lablife"
+  },
+  {
+    "year": 2022,
+    "month": 6,
+    "title": "ICROS 2022",
+    "short_desc": "Geojedo",
+    "long_desc": "제어로봇시스템학회 학술대회에서 포스터발표를 했습니다.",
+    "image": "2022_06_ICROS_거제.png",
+    "type": "conference"
+  },
+  {
+    "year": 2022,
+    "month": 6,
+    "title": "ICROS 2022",
+    "short_desc": "Geojedo",
+    "long_desc": "몽돌해변에서 다함께 타이머로 찰칵 📸",
+    "image": "2022_06_ICROS_2.jpg",
+    "type": "conference"
+  },
+  {
+    "year": 2021,
+    "month": 12,
+    "title": "Year-end Party 2021",
+    "short_desc": "연구실 송년회",
+    "long_desc": "연말에 마니또 선물교환의 전통이 시작된 날",
+    "image": "2021_12_Christmas.JPG",
+    "type": "lablife"
+  }
+]
